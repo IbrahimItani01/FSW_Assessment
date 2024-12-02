@@ -8,4 +8,8 @@ Route::middleware(IncrementRequests::class)->group(function () {
     Route::prefix('users')->group(function () {
         
     });
+
+    Route::prefix('projects')->group(function () {
+       
+    });
 });
