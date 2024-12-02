@@ -13,14 +13,9 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id(); // Primary key
-            $table->int('user_id'); 
-            $table->int('project_id');
-            $table->timestamps();
-
-            // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
-     
+            $table->integer('user_id'); 
+            $table->integer('project_id');
+            $table->timestamps();  
         });
     }
 
