@@ -26,4 +26,11 @@ const ProjectsProvider = ({ children }) => {
     fetchProjects();
   }, []);
 
+  return (
+    <projectsContext.Provider value={{ projects}}>
+      {children}
+    </projectsContext.Provider>
+  );
+};
+
 export default ProjectsProvider;
