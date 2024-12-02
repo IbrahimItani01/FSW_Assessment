@@ -16,3 +16,7 @@ class IncrementRequests
      * @param  \Closure  $next
      * @return \Symfony\Component\HttpFoundation\Response
      */
+    public function handle(Request $request, Closure $next): Response
+    {
+        $userId = $request->input('user_id');
+        
