@@ -5,6 +5,7 @@ export const projectsContext = createContext();
 
 const getProjects = apiRoutes.getProjects;
 
+const ProjectsProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
 
   const fetchProjects = async () => {
@@ -21,4 +22,8 @@ const getProjects = apiRoutes.getProjects;
       console.log(err.message);
     }
   };
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
 export default ProjectsProvider;
