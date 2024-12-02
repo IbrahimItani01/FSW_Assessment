@@ -40,4 +40,25 @@ class Users extends Controller
         ], 200);
     }
 
+    public function create(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User created successfully',
+            'user' => $user
+        ], 201);
+    }
+
 }
