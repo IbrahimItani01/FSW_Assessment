@@ -41,4 +41,23 @@ class Projects extends Controller
         ], 200);
     }
 
+    public function create(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+        ]);
+
+        $project = Project::create([
+            'name' => $validated['name'],
+            'description' => $validated['description'],
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Project created successfully',
+            'project' => $project
+        ], 201);
+    }
+
 }
