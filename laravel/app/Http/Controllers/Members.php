@@ -26,4 +26,29 @@ class Members extends Controller
         ], 201);
     }
 
+    public function remove(Request $request)
+    {
+        $validated = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'project_id' => 'required|exists:projects,id',
+        ]);
+
+        $member = Member::where('user_id', $validated['user_id'])
+                        ->where('project_id', $validated['project_id'])
+                        ->first();
+
+        if (!$member) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Member not found in the project'
+            ], 404);
+        }
+
+        $member->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Member removed from project successfully'
+        ], 200);
+    }
 }
