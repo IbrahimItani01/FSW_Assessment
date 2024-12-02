@@ -5,11 +5,6 @@ export const projectsContext = createContext();
 
 const getProjects = apiRoutes.getProjects;
 
-const ProjectsProvider = ({children})=>{
-    return  (
-        <projectsContext.Provider>
-            {children}
-        </projectsContext.Provider>
-    )
-}
+  const [projects, setProjects] = useState([]);
+
 export default ProjectsProvider;
