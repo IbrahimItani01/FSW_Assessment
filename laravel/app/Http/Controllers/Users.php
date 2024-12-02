@@ -23,4 +23,21 @@ class Users extends Controller
         ], 404);
     }
 
+    public function getData($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'User not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'user' => $user
+        ], 200);
+    }
+
 }
