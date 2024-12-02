@@ -20,3 +20,14 @@ class IncrementRequests
     {
         $userId = $request->input('user_id');
         
+        if ($userId) {
+            $user = User::find($userId);
+
+            if ($user) {
+                $user->increment('requests_num');
+            }
+        }
+
+        return $next($request);
+    }
+}
