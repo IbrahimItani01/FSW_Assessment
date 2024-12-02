@@ -94,4 +94,22 @@ class Projects extends Controller
         ], 200);
     }
 
+    public function delete($id)
+    {
+        $project = Project::find($id);
+
+        if (!$project) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Project not found'
+            ], 404);
+        }
+
+        $project->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Project deleted successfully'
+        ], 200);
+    }
 }
