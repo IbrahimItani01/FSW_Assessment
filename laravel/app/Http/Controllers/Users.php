@@ -100,4 +100,22 @@ class Users extends Controller
         ], 200);
     }
 
+    public function delete($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'User not found'
+            ], 404);
+        }
+
+        $user->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'User deleted successfully'
+        ], 200);
+    }
 }
