@@ -6,6 +6,7 @@ export const projectsContext = createContext();
 const getProjects = apiRoutes.getProjects;
 
 const ProjectsProvider = ({ children }) => {
+  // TODO: implement the logic to pass user id to the url so the middleware can increment the request_nums
   const [projects, setProjects] = useState([]);
 
   const fetchProjects = async () => {
