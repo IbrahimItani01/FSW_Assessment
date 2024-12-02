@@ -23,4 +23,22 @@ class Projects extends Controller
             'projects' => $projects
         ], 200);
     }
+
+    public function getData($id)
+    {
+        $project = Project::find($id);
+
+        if (!$project) {
+            return response()->json([
+                'status' => 'failed',
+                'message' => 'Project not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'project' => $project
+        ], 200);
+    }
+
 }
