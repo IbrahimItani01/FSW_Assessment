@@ -24,5 +24,9 @@ Route::middleware(IncrementRequests::class)->group(function () {
         Route::put('/', [Projects::class, 'update']); 
         Route::delete('/{id}', [Projects::class, 'delete']); 
     });
+
+    Route::prefix('members')->group(function () {
+        Route::post('/add', [Members::class, 'add']); 
+        Route::delete('/delete', [Members::class, 'delete']); 
     });
 });
