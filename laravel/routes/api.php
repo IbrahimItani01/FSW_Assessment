@@ -18,6 +18,11 @@ Route::middleware(IncrementRequests::class)->group(function () {
     });
 
     Route::prefix('projects')->group(function () {
-       
+        Route::get('/', [Projects::class, 'getAll']); 
+        Route::get('/{id}', [Projects::class, 'getData']); 
+        Route::post('/', [Projects::class, 'create']); 
+        Route::put('/', [Projects::class, 'update']); 
+        Route::delete('/{id}', [Projects::class, 'delete']); 
+    });
     });
 });
